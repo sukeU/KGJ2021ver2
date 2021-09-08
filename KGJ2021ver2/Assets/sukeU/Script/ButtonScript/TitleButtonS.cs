@@ -19,9 +19,15 @@ public class TitleButtonS : MonoBehaviour
         
     }
 
-    public void OnClick()
+    public void TitleOnClick()
     {
         Debug.Log("Titleをロードします");
         SceneManagerS.LoadTitle();
+    }
+
+    public void EscOnClick()
+    {
+        Debug.Log("ゲームを終了します");
+        Application.Quit();
     }
 }

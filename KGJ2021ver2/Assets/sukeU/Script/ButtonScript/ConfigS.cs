@@ -15,19 +15,16 @@ public class ConfigS : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+
+    public void ConfigOnClick()
     {
-       
-    }
-    public void OnClick()
-    {
-        child.SetActive(true);
-        pause = true;
+            child.SetActive(true);
+            pause = true;   
     }
     
     public void PauseRelease()
     {
-        child.SetActive(false);
-        pause = false;
+            child.SetActive(false);
+            pause = false;
     }
 }

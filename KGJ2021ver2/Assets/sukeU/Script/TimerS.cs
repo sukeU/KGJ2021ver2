@@ -17,7 +17,7 @@ public class TimerS : MonoBehaviour
         time = countDown;
         textObj = transform.GetChild(0).gameObject;
         timerText = textObj.GetComponent<Text>();
-        configObj = transform.parent.gameObject;
+        configObj = GameObject.Find("Config");
         ConfigS = configObj.GetComponent<ConfigS>();
     }
 

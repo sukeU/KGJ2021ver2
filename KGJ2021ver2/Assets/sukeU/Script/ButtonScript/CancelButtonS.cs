@@ -21,8 +21,9 @@ public class CancelButtonS : MonoBehaviour
         
     }
 
-    public void OnClick()
+    public void CancelOnClick()
     {
-        ConfigS.PauseRelease();
+         ConfigS.PauseRelease();
+        
     }
 }

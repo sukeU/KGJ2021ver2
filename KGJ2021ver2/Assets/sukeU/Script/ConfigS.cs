@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CancelButtonS : MonoBehaviour
+public class ConfigS : MonoBehaviour
 {
-    public GameObject parent;
+    GameObject child;
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent.gameObject;
+        child = transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
-
     public void OnClick()
     {
-        parent.SetActive(false);
+        child.SetActive(true);
     }
 }

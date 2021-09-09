@@ -12,6 +12,6 @@ public class SceneManagerS : MonoBehaviour
     }
     public void LoadResult()
     {
-        SceneManager.LoadScene("Title");
+        SceneManager.LoadScene("result");
     }
 }

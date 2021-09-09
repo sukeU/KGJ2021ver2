@@ -5850,7 +5850,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7686195272515698108, guid: 37078bce740b1b9499786e8c98a5ebf2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7686195272819622571, guid: 37078bce740b1b9499786e8c98a5ebf2, type: 3}
       propertyPath: m_Name
@@ -5942,6 +5942,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7686195272819622575, guid: 37078bce740b1b9499786e8c98a5ebf2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686195272838346228, guid: 37078bce740b1b9499786e8c98a5ebf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686195274053494935, guid: 37078bce740b1b9499786e8c98a5ebf2, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11467,6 +11475,10 @@ PrefabInstance:
     - target: {fileID: 2089846947072828579, guid: eec9af0895950e44490ff34c0f334e83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089846947072828582, guid: eec9af0895950e44490ff34c0f334e83, type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2089846947072828582, guid: eec9af0895950e44490ff34c0f334e83, type: 3}
       propertyPath: RouteS

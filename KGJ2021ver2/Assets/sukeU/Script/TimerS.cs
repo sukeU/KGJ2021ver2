@@ -10,6 +10,7 @@ public class TimerS : MonoBehaviour
     GameObject textObj,configObj;
     Text timerText;
     ConfigS ConfigS;
+    SceneManagerS SceneManagerS;
     
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class TimerS : MonoBehaviour
         timerText = textObj.GetComponent<Text>();
         configObj = GameObject.Find("Config");
         ConfigS = configObj.GetComponent<ConfigS>();
+        SceneManagerS = GameObject.Find("SceneManager").GetComponent<SceneManagerS>();
     }
 
     // Update is called once per frame
@@ -30,5 +32,9 @@ public class TimerS : MonoBehaviour
         }
         displayTime = (int)time;
         timerText.text = displayTime.ToString();
+        if (time <= 0)
+        {
+            SceneManagerS.LoadResult();
+        }
     }
 }

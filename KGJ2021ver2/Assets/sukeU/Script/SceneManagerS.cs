@@ -10,4 +10,8 @@ public class SceneManagerS : MonoBehaviour
     {
         SceneManager.LoadScene("Title");
     }
+    public void LoadResult()
+    {
+        SceneManager.LoadScene("Title");
+    }
 }

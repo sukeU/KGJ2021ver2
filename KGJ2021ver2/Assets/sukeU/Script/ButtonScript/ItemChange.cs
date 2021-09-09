@@ -51,4 +51,8 @@ public class ItemChange : MonoBehaviour
             i = MaxItem;
         }
     }
+    public int num
+    {
+        get { return i; }
+    }
 }

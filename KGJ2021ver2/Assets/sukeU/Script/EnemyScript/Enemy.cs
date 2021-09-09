@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     int hitPoint;
     private int pointValve;
     public RouteS RouteS;
+    private bool stan;
+    private float stanTime=5f;
+    private float stanElapseTime;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +22,20 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         var Vector = RouteS.points[pointValve + 1].transform.position - RouteS.points[pointValve].transform.position;
-        transform.position += Vector.normalized * speed * Time.deltaTime;
+        if (!stan)
+        {
+            transform.position += Vector.normalized * speed * Time.deltaTime;
+        }
+        else
+        {
+            stanElapseTime += Time.deltaTime;
+            if (stanElapseTime > stanTime)
+            {
+                stan = false;
+            }
+        }
+
+
 
         var PlayerVector = transform.position - RouteS.points[pointValve].transform.position;
         if (PlayerVector.magnitude >= Vector.magnitude)
@@ -31,6 +47,14 @@ public class Enemy : MonoBehaviour
                 //TODO プレイヤーにダメージ
             }
         }
-
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "temp")
+        {
+            stanElapseTime = 0f;
+            stan = true;
+        }
     }
 }

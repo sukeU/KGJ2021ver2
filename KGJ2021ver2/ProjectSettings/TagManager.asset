@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DroppableField
   - miti
+  - Enemy
   layers:
   - Default
   - TransparentFX

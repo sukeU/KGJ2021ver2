@@ -9,9 +9,14 @@ public class Enemy : MonoBehaviour
     private int pointValve;
     public RouteS RouteS;
     private bool stan;
-    private float stanTime=5f;
+    private float stanTime=0.5f;
     private float stanElapseTime;
     ConfigS ConfigS;
+    //public bool tes=false;
+    bool ready = false;
+    float coolDownTime = 1.5f;
+    float downElapseTime;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +28,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!ConfigS.handOver)
+        if (!ConfigS.handOver)//pause
         {
             var Vector = RouteS.points[pointValve + 1].transform.position - RouteS.points[pointValve].transform.position;
             if (!stan)
@@ -36,9 +41,25 @@ public class Enemy : MonoBehaviour
                 if (stanElapseTime > stanTime)
                 {
                     stan = false;
+                    stanElapseTime = 0f;
                 }
             }
-
+            /*
+            if (tes)
+            {
+                SpeedDown(1);
+            }
+            */
+            if (!ready)
+            {
+                 downElapseTime+= Time.deltaTime;
+                if(downElapseTime> coolDownTime)
+                {
+                    ready = true;
+                    downElapseTime = 0f;
+                }
+            }
+            
             var PlayerVector = transform.position - RouteS.points[pointValve].transform.position;
             if (PlayerVector.magnitude >= Vector.magnitude)
             {
@@ -51,21 +72,31 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "temp")
-        {
-            stanElapseTime = 0f;
-            stan = true;
-        }
-    }
-    */
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "temp")
-        {
-            stanElapseTime = 0f;
-            stan = true;
-        }
+        
+       
     }
+
+    public void SpeedDown(float downSpeed)
+    {
+        if (ready)
+        {
+            if (speed > 0.2)
+            {
+                speed = speed - downSpeed;    
+            }
+            ready = false;
+        }
+
+
+    }
+
+    public void Stan()
+    {
+        stan = true;
+      
+    }
+
 }

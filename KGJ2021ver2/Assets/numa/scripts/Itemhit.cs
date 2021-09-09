@@ -27,6 +27,38 @@ public class Itemhit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+            Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            switch (gameObject.name) {
+                case "ささみ(Clone)":
+                enemy.SpeedDown(downspeed);
+                    break;
+                case "カンガルーおかん(Clone)":
+                    enemy.Destroy();
+                    break;
 
+                    //caseを各アイテムごとに書く
+                   
+                    //enemy.Destroy()はマッチョを破壊する奴
+            }
+
+        }
+        
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            switch (gameObject.name)
+            {
+                case "マッスル雑誌(Clone)":
+                    enemy.Stan();
+                    break;
+                    //enemy.Stan();はスタンさせるタイプのやつ
+            }
+        }
     }
 }

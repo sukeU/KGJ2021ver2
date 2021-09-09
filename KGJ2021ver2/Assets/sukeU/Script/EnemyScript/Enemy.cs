@@ -9,18 +9,19 @@ public class Enemy : MonoBehaviour
     private int pointValve;
     public RouteS RouteS;
     private bool stan;
-    private float stanTime=0.5f;
+    private float stanTime=0.1f;
     private float stanElapseTime;
     ConfigS ConfigS;
     //public bool tes=false;
     bool ready = false;
     float coolDownTime = 1.5f;
     float downElapseTime;
-    
+    Rigidbody2D rigidbody2d;
 
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody2d = GetComponent<Rigidbody2D>();
         transform.position = RouteS.points[0].transform.position;
         ConfigS = GameObject.Find("Config").GetComponent<ConfigS>();
     }
@@ -73,12 +74,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-       
-    }
-
     public void SpeedDown(float downSpeed)
     {
         if (ready)
@@ -99,4 +94,8 @@ public class Enemy : MonoBehaviour
       
     }
 
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
+    }
 }

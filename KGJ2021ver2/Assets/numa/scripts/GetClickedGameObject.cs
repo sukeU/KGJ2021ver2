@@ -4,10 +4,10 @@ public class GetClickedGameObject : MonoBehaviour
 {
 
     public GameObject clickedGameObject;
-    int mitilayer;
+    Vector2 mousePos;
     private void Start()
     {
-         mitilayer = 6;
+
     }
     
     void Update()
@@ -18,19 +18,22 @@ public class GetClickedGameObject : MonoBehaviour
 
             clickedGameObject = null;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            
+
             //ヒットした2Dオブジェクトを入れておく
-            RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction,Mathf.Infinity,mitilayer);
-
-            if (hit2d)
+            Collider2D click_miti = Physics2D.OverlapPoint(mousePos,LayerMask.GetMask("miti"));
+            Collider2D click_wall = Physics2D.OverlapPoint(mousePos, LayerMask.GetMask("wall"));
+            if (click_miti)
             {
-                clickedGameObject = hit2d.transform.gameObject;
-
+                clickedGameObject = click_miti.transform.gameObject;
             }
-            
-            Debug.Log("tag"+clickedGameObject.tag);
+            if (click_wall)
+            {
+                clickedGameObject = click_wall.transform.gameObject;
+            }
+
+            Debug.Log("tag"+clickedGameObject.layer);
         }
     }
 }

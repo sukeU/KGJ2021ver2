@@ -1551,7 +1551,7 @@ GameObject:
   - component: {fileID: 214424281}
   - component: {fileID: 214424280}
   - component: {fileID: 214424282}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8992,7 +8992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a92c124723b04547a0d1fb98e67ab10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5033499074694360815, guid: 2967a925af5ad71449ef1b761dc344d8, type: 3}
+  kangaroo: {fileID: 5033499074694360815, guid: 2967a925af5ad71449ef1b761dc344d8, type: 3}
+  mousePosition: {x: 0, y: 0, z: 0}
+  clickedGameObject: {fileID: 0}
+  mousePos: {x: 0, y: 0, z: 0}
 --- !u!4 &1499791578
 Transform:
   m_ObjectHideFlags: 0
@@ -9014,7 +9017,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499791576}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 941658b9a1f295546be4e6e967a18c2a, type: 3}
   m_Name: 
@@ -9031,7 +9034,7 @@ GameObject:
   - component: {fileID: 1512859343}
   - component: {fileID: 1512859342}
   - component: {fileID: 1512859344}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: stage1wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9117,7 +9120,7 @@ GameObject:
   - component: {fileID: 1526555247}
   m_Layer: 6
   m_Name: miti
-  m_TagString: Untagged
+  m_TagString: miti
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

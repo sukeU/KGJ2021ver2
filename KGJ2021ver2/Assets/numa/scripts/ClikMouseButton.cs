@@ -5,18 +5,29 @@ using UnityEngine.Tilemaps;
 
 public class ClikMouseButton : MonoBehaviour
 {
-    public GameObject kangaroo;
     private Vector3 mousePosition;
     private GameObject clickedGameObject;
     private Vector3 mousePos;
-    public Grid miti_tilemap;
-    public Grid wall_tilemap;
+    [SerializeField]
+    private Grid miti_tilemap;
+    [SerializeField]
+    private Grid wall_tilemap;
+    [SerializeField]
+    private GameObject[] plafabs;
+    ItemChange Item;
+    [SerializeField]
+    private GameObject ItemgameObject;
+    int heyaban;
+    private void Start()
+    {
+        Item = ItemgameObject.GetComponent<ItemChange>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             clickedGameObject = null;//clickしたゲームオブジェクトをnullに入れる
-
+            
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//マウスの座標を取得
 
 
@@ -29,7 +40,8 @@ public class ClikMouseButton : MonoBehaviour
                 mousePosition = Input.mousePosition;//マウスのワールド座標を記録する
                 mousePosition.z = 10.0f;
                 mousePosition = miti_tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                GameObject chara = Instantiate(kangaroo, mousePosition, Quaternion.identity);
+                heyaban=Item.num;
+                GameObject chara = Instantiate(plafabs[heyaban], mousePosition, Quaternion.identity);
                 chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
             }
             if (click_wall)

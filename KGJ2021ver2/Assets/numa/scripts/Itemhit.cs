@@ -35,12 +35,22 @@ public class Itemhit : MonoBehaviour
                 case "ささみ(Clone)":
                 enemy.SpeedDown(downspeed);
                     break;
+                case "サングラス(Clone)":
+                    enemy.SpeedDown(downspeed);
+                    break;
+                case "ダンベル(Clone)":
+                    enemy.SpeedDown(downspeed);
+                    break;
                 case "カンガルーおかん(Clone)":
                     enemy.Destroy();
                     break;
+                case "サンオイル(Clone)":
+                    enemy.Destroy();
+                    break;
+                
 
                     //caseを各アイテムごとに書く
-                   
+
                     //enemy.Destroy()はマッチョを破壊する奴
             }
 
@@ -55,6 +65,9 @@ public class Itemhit : MonoBehaviour
             switch (gameObject.name)
             {
                 case "マッスル雑誌(Clone)":
+                    enemy.Stan();
+                    break;
+                case "プロテイン(Clone)":
                     enemy.Stan();
                     break;
                     //enemy.Stan();はスタンさせるタイプのやつ

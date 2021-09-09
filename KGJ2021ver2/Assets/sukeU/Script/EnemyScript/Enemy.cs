@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
+    public float initialSpeed;
+    float nowSpeed;
     int hitPoint;
     private int pointValve;
     public RouteS RouteS;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         transform.position = RouteS.points[0].transform.position;
         ConfigS = GameObject.Find("Config").GetComponent<ConfigS>();
+        nowSpeed = initialSpeed;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class Enemy : MonoBehaviour
             var Vector = RouteS.points[pointValve + 1].transform.position - RouteS.points[pointValve].transform.position;
             if (!stan)
             {
-                transform.position += Vector.normalized * speed * Time.deltaTime;
+                transform.position += Vector.normalized * nowSpeed * Time.deltaTime;
             }
             else
             {
@@ -45,15 +47,14 @@ public class Enemy : MonoBehaviour
                     stanElapseTime = 0f;
                 }
             }
-            /*
-            if (tes)
-            {
-                SpeedDown(1);
-            }
-            */
+            
             if (!ready)
             {
-                 downElapseTime+= Time.deltaTime;
+                if (initialSpeed >= nowSpeed)
+                {
+                    nowSpeed += 0.002f;
+                }
+                downElapseTime += Time.deltaTime;
                 if(downElapseTime> coolDownTime)
                 {
                     ready = true;
@@ -78,9 +79,13 @@ public class Enemy : MonoBehaviour
     {
         if (ready)
         {
-            if (speed > 0.2)
+            if (nowSpeed > downSpeed)
             {
-                speed = speed - downSpeed;    
+                nowSpeed = nowSpeed - downSpeed;
+            }
+            else
+            {
+                nowSpeed = nowSpeed / 2;
             }
             ready = false;
         }

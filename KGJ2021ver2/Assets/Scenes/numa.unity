@@ -9289,6 +9289,10 @@ PrefabInstance:
       propertyPath: RouteS
       value: 
       objectReference: {fileID: 1029384318}
+    - target: {fileID: 2089846947072828582, guid: eec9af0895950e44490ff34c0f334e83, type: 3}
+      propertyPath: initialSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2089846947072828589, guid: eec9af0895950e44490ff34c0f334e83, type: 3}
       propertyPath: m_Name
       value: Enemy

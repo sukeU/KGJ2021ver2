@@ -7,8 +7,10 @@ public class ItemChange : MonoBehaviour
 {
     public GameObject displayItem;
     int i=0;
+    int MaxItem = 6, Itemzero = 0;
     private Image image;
-    public Sprite[] sprite=new Sprite[5];
+    public Sprite[] sprite;
+
 
     public AudioClip sound1;
     AudioSource audioSource;
@@ -30,23 +32,23 @@ public class ItemChange : MonoBehaviour
     public void RightOnClick()
     {
         audioSource.PlayOneShot(sound1);
-        if (i != 4)
+        if (i != MaxItem)
         {
             i += 1;
-        }else if (i == 4)
+        }else if (i == MaxItem)
         {
-            i = 0;
+            i = Itemzero;
         }
     }
     public void LeftOnClick()
     {
         audioSource.PlayOneShot(sound1);
-        if (i != 0)
+        if (i != Itemzero)
         {
             i -= 1;
-        }else if (i == 0)
+        }else if (i == Itemzero)
         {
-            i = 4;
+            i = MaxItem;
         }
     }
 }

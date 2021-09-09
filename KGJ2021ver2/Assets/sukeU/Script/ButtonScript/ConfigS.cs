@@ -5,7 +5,7 @@ using UnityEngine;
 public class ConfigS : MonoBehaviour
 {
     GameObject child;
-    bool pause;
+    bool pause=false;
     public bool handOver { get { return pause; } }
 
     public AudioClip[] sound=new AudioClip[2];

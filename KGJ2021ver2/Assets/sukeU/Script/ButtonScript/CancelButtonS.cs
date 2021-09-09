@@ -13,6 +13,7 @@ public class CancelButtonS : MonoBehaviour
         parent = transform.parent.gameObject;
         grandParent = transform.parent.parent.gameObject;
         ConfigS = grandParent.GetComponent<ConfigS>();
+        
     }
 
     // Update is called once per frame
@@ -23,7 +24,6 @@ public class CancelButtonS : MonoBehaviour
 
     public void CancelOnClick()
     {
-         ConfigS.PauseRelease();
-        
+        ConfigS.PauseRelease();   
     }
 }

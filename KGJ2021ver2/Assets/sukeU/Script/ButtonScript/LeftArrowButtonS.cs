@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CancelButtonS : MonoBehaviour
+public class LeftArrowButtonS : MonoBehaviour
 {
-    public GameObject parent;
+    ItemChange itemChange;
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent.gameObject;
+        itemChange = transform.parent.gameObject.GetComponent<ItemChange>();
     }
 
     // Update is called once per frame
@@ -17,9 +17,8 @@ public class CancelButtonS : MonoBehaviour
         
     }
 
-    public void OnClick()
+    public void LeftOnClick()
     {
-        Debug.Log("‰Ÿ‚³‚ê‚½");
-        parent.SetActive(false);
+        itemChange.LeftOnClick();
     }
 }

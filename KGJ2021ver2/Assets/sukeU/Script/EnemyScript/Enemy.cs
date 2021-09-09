@@ -39,13 +39,11 @@ public class Enemy : MonoBehaviour
                 }
             }
 
-
-
             var PlayerVector = transform.position - RouteS.points[pointValve].transform.position;
             if (PlayerVector.magnitude >= Vector.magnitude)
             {
-                pointValve++; //次のPointへ
-                if (pointValve >= RouteS.points.Length - 1)//最後まで到達した
+                pointValve++; 
+                if (pointValve >= RouteS.points.Length - 1)
                 {
                     Destroy(gameObject);
                     //TODO プレイヤーにダメージ
@@ -53,7 +51,16 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "temp")
+        {
+            stanElapseTime = 0f;
+            stan = true;
+        }
+    }
+    */
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "temp")
         {

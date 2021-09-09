@@ -36,8 +36,7 @@ public class ClikMouseButton : MonoBehaviour
             {
                 clickedGameObject = click_wall.transform.gameObject;
             }
-
-            Debug.Log("tag" + clickedGameObject.layer);
+            
             
         }
     }

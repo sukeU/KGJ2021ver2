@@ -10,15 +10,24 @@ public class Itemhit : MonoBehaviour
     [SerializeField]
     float downspeed;
     float time;
- 
+    ConfigS ConfigS;
+
+    private void Start()
+    {
+        ConfigS = GameObject.Find("Config").GetComponent<ConfigS>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if (HpTime < time)
+        if (!ConfigS.handOver)
         {
-            Destroy(this.gameObject);
-           
+            time += Time.deltaTime;
+            if (HpTime < time)
+            {
+                Destroy(this.gameObject);
+
+            }
         }
     }
     public float GetDownspeed()

@@ -25,20 +25,22 @@ public class ClikMouseButton : MonoBehaviour
     int[] plafabs_count = new int[7];
     ItemChange Item;
     Itemmaxset Itemmaxset;
+    ConfigS ConfigS;
 
     int heyaban;
     private void Start()
     {
         Item = ItemgameObject.GetComponent<ItemChange>();
         Itemmaxset = ItemmaxsetObject.GetComponent<Itemmaxset>();
-        
+        ConfigS = GameObject.Find("Config").GetComponent<ConfigS>();
+
     }
     void Update()
     {
         heyaban = Item.num;
         Debug.Log(Item.num);
         Itemmaxset.Set_NowInt(plafabs_count[heyaban], heyaban);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&&!ConfigS.handOver)
         {
             clickedGameObject = null;//clickしたゲームオブジェクトをnullに入れる
             

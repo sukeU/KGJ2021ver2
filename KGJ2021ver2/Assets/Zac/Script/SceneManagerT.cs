@@ -10,9 +10,9 @@ public class SceneManagerT : MonoBehaviour
         SceneManager.LoadScene("numa");
     }
 
-    public void LoadResult()
+    public void LoadTutorial()
     {
-        SceneManager.LoadScene("result");
+        SceneManager.LoadScene("tutorial");
     }
     
     public void LoadTitle()

@@ -721,7 +721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ryuki\nZac\n\u6CBC\u5009\n\u78EF\u90E8\u7950\u4ECB"
+  m_Text: "Ryuki\nZac\n\u6CBC\nYuusuke"
 --- !u!222 &930720283
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -915,7 +915,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u4F7F\u7528\u7D20\u6750\u30FB\u30A2\u30BB\u30C3\u30C8\n\u9B54\u738B\u9B42\u30FB\u52B9\u679C\u97F3\u30E9\u30DC\u30FBOtoLogic\u30FBDOVA-SYNDROME\nsimple
-    UI&icons"
+    UI&icons\u30FB\u30C9\u30C3\u30C8\u7D75\u4E16\u754C"
 --- !u!222 &1043526821
 CanvasRenderer:
   m_ObjectHideFlags: 0

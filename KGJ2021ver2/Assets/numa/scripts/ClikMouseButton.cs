@@ -2,25 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
 public class ClikMouseButton : MonoBehaviour
 {
     Vector3 mousePosition;
     Vector3 mousePos;
     GameObject clickedGameObject;
+
     [SerializeField]
     GameObject[] plafabs;
+
     [SerializeField]
     GameObject ItemgameObject;
+
     [SerializeField]
     GameObject ItemmaxsetObject;
+
     [SerializeField]
     Grid miti_tilemap;
+
     [SerializeField]
     Grid wall_tilemap;
+ 
     ItemChange Item;
     Itemmaxset Itemmaxset;
-    int[] plafabs_count = new int[6];
+    int[] plafabs_count = new int[] {0,0,0,0,0,0,0 };
 
     int heyaban;
     private void Start()
@@ -32,7 +37,9 @@ public class ClikMouseButton : MonoBehaviour
     void Update()
     {
         heyaban = Item.num;
-        if (Input.GetMouseButtonDown(0)&&Itemmaxset.Get_isItemSet(plafabs_count[heyaban],heyaban))
+        Debug.Log(Item.num);
+        Itemmaxset.Set_NowInt(plafabs_count[heyaban], heyaban);
+        if (Input.GetMouseButtonDown(0))
         {
             clickedGameObject = null;//clickしたゲームオブジェクトをnullに入れる
             
@@ -42,7 +49,7 @@ public class ClikMouseButton : MonoBehaviour
             //ヒットした2Dオブジェクトを入れておく
             Collider2D click_miti = Physics2D.OverlapPoint(mousePos, LayerMask.GetMask("miti"));//マウスでclickしたのがmitiの時に入れる
             Collider2D click_wall = Physics2D.OverlapPoint(mousePos, LayerMask.GetMask("wall"));//マウスでclickしたのがwallの時にオブジェクトを記憶する
-            if (click_miti)//道がclickされたとき
+            if (click_miti && Itemmaxset.Get_isItemSet(plafabs_count[heyaban], heyaban))//道がclickされたとき
             {
                 clickedGameObject = click_miti.transform.gameObject;//mitiのゲームオブジェクトを入れる
                 mousePosition = Input.mousePosition;//マウスのワールド座標を記録する

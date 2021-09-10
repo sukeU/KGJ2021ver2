@@ -21,13 +21,17 @@ public class TitleButtonS : MonoBehaviour
 
     public void TitleOnClick()
     {
-        Debug.Log("Titleをロードします");
         SceneManagerS.LoadTitle();
     }
 
     public void EscOnClick()
     {
-        Debug.Log("ゲームを終了します");
-        Application.Quit();
+#if (UNITY_EDITOR)
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif (UNITY_STANDALONE) 
+    Application.Quit();
+#elif (UNITY_WEBGL)
+    Application.OpenURL("about:blank");
+#endif
     }
 }

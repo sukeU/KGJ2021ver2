@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
 public class ClikMouseButton : MonoBehaviour
 {
     Vector3 mousePosition;
     Vector3 mousePos;
     GameObject clickedGameObject;
+
     [SerializeField]
     GameObject[] plafabs;
+
     [SerializeField]
     GameObject ItemgameObject;
+
     [SerializeField]
     GameObject ItemmaxsetObject;
+
     [SerializeField]
     Grid miti_tilemap;
+
     [SerializeField]
     Grid wall_tilemap;
+ 
     ItemChange Item;
     Itemmaxset Itemmaxset;
-    int[] plafabs_count = new int[7];
 
     int heyaban;
     private void Start()
@@ -32,20 +36,22 @@ public class ClikMouseButton : MonoBehaviour
     void Update()
     {
         heyaban = Item.num;
-        if (Input.GetMouseButtonDown(0)&&Itemmaxset.Get_isItemSet(plafabs_count[heyaban],heyaban))
+        Debug.Log(Item.num);
+        Itemmaxset.Set_NowInt(plafabs_count[heyaban], heyaban);
+        if (Input.GetMouseButtonDown(0))
         {
-            clickedGameObject = null;//click‚µ‚½ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğnull‚É“ü‚ê‚é
+            clickedGameObject = null;//clickã—ãŸã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’nullã«å…¥ã‚Œã‚‹
             
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//ƒ}ƒEƒX‚ÌÀ•W‚ğæ“¾
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//ãƒã‚¦ã‚¹ã®åº§æ¨™ã‚’å–å¾—
             
 
-            //ƒqƒbƒg‚µ‚½2DƒIƒuƒWƒFƒNƒg‚ğ“ü‚ê‚Ä‚¨‚­
-            Collider2D click_miti = Physics2D.OverlapPoint(mousePos, LayerMask.GetMask("miti"));//ƒ}ƒEƒX‚Åclick‚µ‚½‚Ì‚ªmiti‚Ì‚É“ü‚ê‚é
-            Collider2D click_wall = Physics2D.OverlapPoint(mousePos, LayerMask.GetMask("wall"));//ƒ}ƒEƒX‚Åclick‚µ‚½‚Ì‚ªwall‚Ì‚ÉƒIƒuƒWƒFƒNƒg‚ğ‹L‰¯‚·‚é
-            if (click_miti)//“¹‚ªclick‚³‚ê‚½‚Æ‚«
+            //ãƒ’ãƒƒãƒˆã—ãŸ2Dã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¥ã‚Œã¦ãŠã
+            Collider2D click_miti = Physics2D.OverlapPoint(mousePos, LayerMask.GetMask("miti"));//ãƒã‚¦ã‚¹ã§clickã—ãŸã®ãŒmitiã®æ™‚ã«å…¥ã‚Œã‚‹
+            Collider2D click_wall = Physics2D.OverlapPoint(mousePos, LayerMask.GetMask("wall"));//ãƒã‚¦ã‚¹ã§clickã—ãŸã®ãŒwallã®æ™‚ã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨˜æ†¶ã™ã‚‹
+            if (click_miti && Itemmaxset.Get_isItemSet(plafabs_count[heyaban], heyaban))//é“ãŒclickã•ã‚ŒãŸã¨ã
             {
-                clickedGameObject = click_miti.transform.gameObject;//miti‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğ“ü‚ê‚é
-                mousePosition = Input.mousePosition;//ƒ}ƒEƒX‚Ìƒ[ƒ‹ƒhÀ•W‚ğ‹L˜^‚·‚é
+                clickedGameObject = click_miti.transform.gameObject;//mitiã®ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¥ã‚Œã‚‹
+                mousePosition = Input.mousePosition;//ãƒã‚¦ã‚¹ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‚’è¨˜éŒ²ã™ã‚‹
                 mousePosition.z = 10.0f;
                 mousePosition = miti_tilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 plafabs_count[heyaban]++;

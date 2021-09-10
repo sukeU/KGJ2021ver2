@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
+    public float initialSpeed;
+    float nowSpeed;
     int hitPoint;
     private int pointValve;
     public RouteS RouteS;
     private bool stan;
-    private float stanTime=5f;
+    private float stanTime=0.1f;
     private float stanElapseTime;
     ConfigS ConfigS;
+    //public bool tes=false;
+    bool ready = false;
+    float coolDownTime = 1.5f;
+    float downElapseTime;
+    Rigidbody2D rigidbody2d;
 
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody2d = GetComponent<Rigidbody2D>();
         transform.position = RouteS.points[0].transform.position;
         ConfigS = GameObject.Find("Config").GetComponent<ConfigS>();
+        nowSpeed = initialSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!ConfigS.handOver)
+        if (!ConfigS.handOver)//pause
         {
             var Vector = RouteS.points[pointValve + 1].transform.position - RouteS.points[pointValve].transform.position;
             if (!stan)
             {
-                transform.position += Vector.normalized * speed * Time.deltaTime;
+                transform.position += Vector.normalized * nowSpeed * Time.deltaTime;
             }
             else
             {
@@ -36,16 +44,29 @@ public class Enemy : MonoBehaviour
                 if (stanElapseTime > stanTime)
                 {
                     stan = false;
+                    stanElapseTime = 0f;
                 }
             }
-
-
-
+            
+            if (!ready)
+            {
+                if (initialSpeed >= nowSpeed)
+                {
+                    nowSpeed += 0.002f;
+                }
+                downElapseTime += Time.deltaTime;
+                if(downElapseTime> coolDownTime)
+                {
+                    ready = true;
+                    downElapseTime = 0f;
+                }
+            }
+            
             var PlayerVector = transform.position - RouteS.points[pointValve].transform.position;
             if (PlayerVector.magnitude >= Vector.magnitude)
             {
-                pointValve++; //次のPointへ
-                if (pointValve >= RouteS.points.Length - 1)//最後まで到達した
+                pointValve++; 
+                if (pointValve >= RouteS.points.Length - 1)
                 {
                     Destroy(gameObject);
                     //TODO プレイヤーにダメージ
@@ -53,12 +74,33 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public void SpeedDown(float downSpeed)
     {
-        if (collision.gameObject.tag == "temp")
+        if (ready)
         {
-            stanElapseTime = 0f;
-            stan = true;
+            if (nowSpeed > downSpeed)
+            {
+                nowSpeed = nowSpeed - downSpeed;
+            }
+            else
+            {
+                nowSpeed = nowSpeed / 2;
+            }
+            ready = false;
         }
+
+
+    }
+
+    public void Stan()
+    {
+        stan = true;
+      
+    }
+
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
     }
 }

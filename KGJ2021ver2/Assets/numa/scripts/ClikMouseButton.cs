@@ -25,7 +25,7 @@ public class ClikMouseButton : MonoBehaviour
  
     ItemChange Item;
     Itemmaxset Itemmaxset;
-    int[] plafabs_count = new int[] {0,0,0,0,0,0,0 };
+    int[] plafabs_count = new int[] {0,0,0,0,0,0,0};
 
     int heyaban;
     private void Start()

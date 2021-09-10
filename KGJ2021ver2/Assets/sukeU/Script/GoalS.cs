@@ -16,4 +16,9 @@ public class GoalS : MonoBehaviour
             SceneManager.LoadResult();
         }
     }
+    public static bool getFlag()
+    {
+        return GameOver;
+    }
+
 }

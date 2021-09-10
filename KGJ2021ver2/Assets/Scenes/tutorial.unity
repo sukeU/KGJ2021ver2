@@ -3245,5 +3245,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8815539017619434235, guid: d01734f2af37f0a4c83eb2ce6aeb9645, type: 3}
+      propertyPath: m_Text
+      value: "\u30BF\u30A4\u30C8\u30EB\u3078"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01734f2af37f0a4c83eb2ce6aeb9645, type: 3}

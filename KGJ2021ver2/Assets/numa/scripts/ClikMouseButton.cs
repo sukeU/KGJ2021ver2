@@ -22,7 +22,7 @@ public class ClikMouseButton : MonoBehaviour
 
     [SerializeField]
     Grid wall_tilemap;
- 
+    int[] plafabs_count = new int[7];
     ItemChange Item;
     Itemmaxset Itemmaxset;
 

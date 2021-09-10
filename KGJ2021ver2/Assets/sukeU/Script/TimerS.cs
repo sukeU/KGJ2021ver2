@@ -34,6 +34,7 @@ public class TimerS : MonoBehaviour
         timerText.text = displayTime.ToString();
         if (time <= 0)
         {
+            GoalS.GameOver = false;
             SceneManagerS.LoadResult();
         }
     }

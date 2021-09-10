@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpTime: 8
-  downspeed: 0
+  downspeed: 5
 --- !u!61 &1705218656957942396
 BoxCollider2D:
   m_ObjectHideFlags: 0

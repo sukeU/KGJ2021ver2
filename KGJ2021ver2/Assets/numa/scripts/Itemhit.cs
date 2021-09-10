@@ -32,14 +32,12 @@ public class Itemhit : MonoBehaviour
         if (enemy != null)
         {
             switch (gameObject.name) {
-                case "ささみ(Clone)":
-                enemy.SpeedDown(downspeed);
-                    break;
+                
                 case "サングラス(Clone)":
                     enemy.SpeedDown(downspeed);
                     break;
                 case "ダンベル(Clone)":
-                    enemy.SpeedDown(downspeed);
+                    enemy.Destroy();
                     break;
                 case "カンガルーおかん(Clone)":
                     enemy.Destroy();
@@ -64,6 +62,9 @@ public class Itemhit : MonoBehaviour
         {
             switch (gameObject.name)
             {
+                case "ささみ(Clone)":
+                    enemy.Stan(); ;
+                    break;
                 case "マッスル雑誌(Clone)":
                     enemy.Stan();
                     break;

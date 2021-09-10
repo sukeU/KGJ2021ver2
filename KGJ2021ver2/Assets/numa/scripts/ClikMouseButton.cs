@@ -20,7 +20,7 @@ public class ClikMouseButton : MonoBehaviour
     Grid wall_tilemap;
     ItemChange Item;
     Itemmaxset Itemmaxset;
-    int[] plafabs_count = new int[6];
+    int[] plafabs_count = new int[7];
 
     int heyaban;
     private void Start()

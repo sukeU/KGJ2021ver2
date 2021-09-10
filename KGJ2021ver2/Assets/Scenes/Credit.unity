@@ -721,7 +721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ryuki\nZac\n\u6CBC\u5009\n\u78EF\u90E8\u7950\u4ECB"
+  m_Text: "Ryuki\nZac\n\u6CBC\u5009\nYuusuke"
 --- !u!222 &930720283
 CanvasRenderer:
   m_ObjectHideFlags: 0

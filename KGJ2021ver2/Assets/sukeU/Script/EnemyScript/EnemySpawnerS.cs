@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemySpawnerS : MonoBehaviour
 {
+    private ConfigS ConfigS;
     [Serializable]
     public class  EnemyState
     {
@@ -22,23 +23,31 @@ public class EnemySpawnerS : MonoBehaviour
     public int waveCount;
     public float time;
 
+    private void Start()
+    {
+        ConfigS = GameObject.Find("Config").GetComponent<ConfigS>();
+    }
+
     private void Update()
     {
         waveCount = 0;
-        time += Time.deltaTime;
-        
+        if (ConfigS.handOver == false)
+        {
+            time += Time.deltaTime;
+            CreateEN();
+        }
     }
 
     public void CreateEN()
     {
-        foreach(var enemystates in waveManagers[waveCount].enemystates)
+        foreach(var enemystate in waveManagers[waveCount].enemystates)
         {
-            if (enemystates.appearTime <= time)
+            if (enemystate.appearTime <= time)
             {
-                var enemy = Instantiate(enemystates.enemy, new Vector3(100, 100), Quaternion.identity);
-                enemy.RouteS = enemystates.route;
+                var enemy = Instantiate(enemystate.enemy, new Vector3(100, 100), Quaternion.identity);
+                enemy.RouteS = enemystate.route;
             }
         }
-        //waveManagers[waveCount].enemystates.RemoveAll()
+        waveManagers[waveCount].enemystates.RemoveAll(enemystate => enemystate.appearTime <= time);
     }
 }
